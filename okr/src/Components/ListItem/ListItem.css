@@ -1,0 +1,23 @@
+ol {
+  margin: 5%;
+  cursor: pointer;
+}
+
+li {
+  list-style: lower-alpha;
+  margin: 2%;
+  cursor: pointer;
+}
+
+details {
+  margin: 4%;
+}
+
+details summary > * {
+  display: inline;
+}
+
+.title {
+  margin-left: 5%;
+  cursor: pointer;
+}

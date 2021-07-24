@@ -1,0 +1,22 @@
+select {
+    align-self:center;
+    margin: 2% 0 2% ;
+    width: 20%;
+    padding: 10px;
+    cursor: pointer;
+}
+
+select > option:hover {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 720px){
+    select {
+        width: 50%;
+    }
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
