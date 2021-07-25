@@ -39,7 +39,7 @@ const List = (props) => {
       ) : (
         <div className="content">
           <select
-            value={selectedCategory}
+            value={selectedCategory || ''}
             onChange={(e) => filterData(e.target.value)}
           >
             {categories &&
@@ -51,6 +51,8 @@ const List = (props) => {
             list.map((data, index) => {
               return (
                 <ListItem
+                  key={data}
+                  className="listItem"
                   index={index + 1}
                   item={data}
                   onClickListItem={listItemHandler}

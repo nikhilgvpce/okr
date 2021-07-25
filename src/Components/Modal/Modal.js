@@ -30,7 +30,7 @@ const Modal = (props) => {
       <ol className="modal-ol">
         {Object.keys(listItem).map((item) => {
           return (
-            <li className="modal-li">
+            <li key={listItem[item]} className="modal-li">
               {item} : {listItem[item]}
             </li>
           );
