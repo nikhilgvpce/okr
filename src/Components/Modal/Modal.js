@@ -33,7 +33,7 @@ const Modal = (props) => {
 };
 
 Modal.propTypes = {
-  listItem: PropTypes.object.isRequired,
+  listItem: PropTypes.object
 };
 
 export default Modal;

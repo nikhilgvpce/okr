@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import "./App.css";
-import List from "./Components/List/List";
+import Loader from "./Components/Loader/Loader";
+import List from "./Container/List";
+import { fetchOKrData } from "./Container/redux/actions";
 
-function App() {
-  const url = "https://okrcentral.github.io/sample-okrs/db.json";
-  const [okrData, setOkrData] = useState([]);
+function App(props) {
+  const { isLoading, fetchOKrData } = props;
 
   useEffect(() => {
-    fetch(url)
-      .then((data) => data.json())
-      .then((res) => {
-        setOkrData(res.data);
-      });
+    fetchOKrData();
   }, []);
+
   return (
     <div className="App">
       <header className="App-header"> Objectives &amp; Key Results </header>
-      {okrData.length > 0 && <List list={okrData} />}
+      {isLoading ? <Loader /> : <List />}
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  isLoading: state.listReducer.isLoading,
+});
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchOKrData: () => dispatch(fetchOKrData()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
