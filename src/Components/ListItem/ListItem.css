@@ -1,6 +1,7 @@
 ol {
-  margin: 5%;
+  margin: 3% 3% 0% 5%;
   cursor: pointer;
+  outline: none;
 }
 
 li {
@@ -9,8 +10,18 @@ li {
   cursor: pointer;
 }
 
+@media screen and (max-width: 720px) {
+  ol {
+    margin: 10%;
+  }
+
+  li {
+    margin: 5%;
+  }
+}
+
 details {
-  margin: 4%;
+  margin: 2%;
 }
 
 details summary > * {
@@ -20,4 +31,9 @@ details summary > * {
 .title {
   margin-left: 5%;
   cursor: pointer;
+  outline: none;
+}
+
+summary {
+  outline: none;
 }

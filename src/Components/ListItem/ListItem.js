@@ -5,6 +5,11 @@ import "./ListItem.css";
 const ListItem = (props) => {
   const { item, index, onClickListItem } = props;
   const { title, children } = item;
+
+  /**
+   * Responsible for rendering Parent and Child OKRs that are received as props
+   * onClickListItem is fired as and when a child OKR is clicked
+   */
   return (
     <details className="list-item" open>
       <summary>
@@ -15,15 +20,13 @@ const ListItem = (props) => {
       <ol type="a">
         {children.map((child) => {
           return (
-            <>
-              <li
-                onClick={() =>
-                  onClickListItem({ isModalOpen: true, item: child })
-                }
-              >
-                {child.title}
-              </li>
-            </>
+            <li
+              onClick={() =>
+                onClickListItem({ isModalOpen: true, item: child })
+              }
+            >
+              {child.title}
+            </li>
           );
         })}
       </ol>

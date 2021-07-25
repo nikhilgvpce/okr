@@ -1,12 +1,23 @@
-export const transFormResponseAction = (selectedCategory = "") => {
+/**
+ * 
+ * @param {*} selectedCategory 
+ * @returns TRANSFORM_RESPONSE action
+ */
+
+export const filterDataAction = (selectedCategory) => {
   const payload = {
     selectedCategory,
   };
   return {
-    type: "TRANSFORM_RESPONSE",
+    type: "FILTER_DATA",
     payload,
   };
 };
+
+/**
+ * 
+ * @returns LOADING_DATA action
+ */
 
 export const loadingData = () => {
   return {
@@ -14,7 +25,13 @@ export const loadingData = () => {
   };
 };
 
-export const setOkrData = (data) => {
+/**
+ * 
+ * @param {data} data 
+ * @returns the dispatch action that sets the fetched OKR data
+ */
+
+export const setOKRData = (data) => {
   const payload = {
     data,
     selectedCategory: "",
@@ -25,7 +42,11 @@ export const setOkrData = (data) => {
   };
 };
 
-export const fetchOKrData = () => {
+/**
+ * dispathces loading action.
+ * Fetches the OKR data and then dispatches the setOKRData action
+ */
+export const fetchOKRData = () => {
   return (dispatch) => {
     const url = "https://okrcentral.github.io/sample-okrs/db.json";
 
@@ -33,6 +54,6 @@ export const fetchOKrData = () => {
 
     return fetch(url, { method: "GET" })
       .then((data) => data.json())
-      .then((res) => dispatch(setOkrData(res.data)));
+      .then((res) => dispatch(setOKRData(res.data)));
   };
 };
