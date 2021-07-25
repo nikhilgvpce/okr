@@ -1,6 +1,6 @@
 /**
- * 
- * @param {*} selectedCategory 
+ *
+ * @param {*} selectedCategory
  * @returns TRANSFORM_RESPONSE action
  */
 
@@ -15,7 +15,7 @@ export const filterDataAction = (selectedCategory) => {
 };
 
 /**
- * 
+ *
  * @returns LOADING_DATA action
  */
 
@@ -26,8 +26,8 @@ export const loadingData = () => {
 };
 
 /**
- * 
- * @param {data} data 
+ *
+ * @param {data} data
  * @returns the dispatch action that sets the fetched OKR data
  */
 
