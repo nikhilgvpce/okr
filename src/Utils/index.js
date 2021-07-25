@@ -1,8 +1,20 @@
-export const transformResponse = (apiRes = [], selectedCategory = '') => {
+
+/**
+ * 
+ * @param {*} apiRes 
+ * @param {*} selectedCategory 
+ * @returns list and selectedCategory as reponse .
+ * 
+ * This function transforms the API response as per our requirement
+ * by filtering according to the selectedCategory that is selected
+ * from the drop down, by defualt "Company" is used as selected parameter
+ */
+
+export const filterResponse = (apiRes = [], selectedCategory = '') => {
   let response = [];
   let categories = [];
   apiRes.length > 0 && apiRes.forEach((data) => {
-    const { id, parent_objective_id, archived, category } = data;
+    const { parent_objective_id, archived, category } = data;
     if (selectedCategory === "" || category === selectedCategory) {
       if (!categories.find((cat) => cat === category)) {
         categories = [...categories, category];

@@ -1,22 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ListItem from "../../Components/ListItem/ListItem";
 import Modal from "../../Components/Modal/Modal";
 import "./List.css";
 import { connect } from "react-redux";
-import { transFormResponseAction, setOkrData } from "../redux/actions";
+import { filterDataAction } from "../redux/actions";
 
+/**
+ *
+ * Responsible to pass each OKR to ListItem component
+ * and display Modal with child OKR details when a child OKR is clicked.
+ */
 const List = (props) => {
-  const { list, categories, filterData, fetchOKrData, selectedCategory } =
-    props;
+  const { list, categories, filterData, selectedCategory } = props;
   const [showModal, setModalState] = useState(false);
   const [listItem, setModalListItem] = useState("");
 
-  const listItemHandler = (prop) => {
-    const { isModalOpen, item } = prop;
+  /***
+   * opens Modal and sets the selected chidl OKR
+   */
+  const listItemHandler = (itemProps) => {
+    const { isModalOpen, item } = itemProps;
     setModalState(isModalOpen);
     setModalListItem(item);
   };
+
+  /**
+   * if showModal is true renders Modal
+   * else renders select drop down which is used to filter category
+   * and delegates each Parent and child OKRs based on catergory to ListItem component.
+   * The selected category is Company by default.
+   */
 
   return (
     <>
@@ -58,8 +72,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => {
   return {
     filterData: (selectedCategory) =>
-      dispatch(transFormResponseAction(selectedCategory)),
-    setOkrData: (data) => dispatch(setOkrData(data)),
+      dispatch(filterDataAction(selectedCategory)),
   };
 };
 

@@ -1,16 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./App.css";
 import Loader from "./Components/Loader/Loader";
 import List from "./Container/List";
-import { fetchOKrData } from "./Container/redux/actions";
+import { fetchOKRData } from "./Container/redux/actions";
+
+/**
+ * 
+ * @param {*} props 
+ * @returns Loader component when fetching the data and List component 
+ * fetching is done
+ */
 
 function App(props) {
-  const { isLoading, fetchOKrData } = props;
+  const { isLoading, fetchOKRData } = props;
 
+  /**
+   * dispatch fetchOKRData action 
+   */
   useEffect(() => {
-    fetchOKrData();
-  }, []);
+    fetchOKRData();
+  }, [fetchOKRData]);
 
   return (
     <div className="App">
@@ -26,7 +36,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchOKrData: () => dispatch(fetchOKrData()),
+    fetchOKRData: () => dispatch(fetchOKRData()),
   };
 };
 

@@ -1,4 +1,4 @@
-import { transformResponse } from "../../../Utils";
+import { filterResponse } from "../../../Utils";
 
 const initialState = {
   list: [],
@@ -8,27 +8,34 @@ const initialState = {
   isLoading: false,
 };
 
+/**
+ * 
+ * @param {*} state 
+ * @param {*} action 
+ * @returns state object that is updated with respective action and provided payload
+ */
+
 const listReducer = (state = initialState, action) => {
   let res = null;
 
   switch (action.type) {
-    case "TRANSFORM_RESPONSE":
-      res = transformResponse(state.okrData, action.payload.selectedCategory);
+    case "FILTER_DATA":
+      res = filterResponse(state.okrData, action.payload.selectedCategory);
       return {
         ...state,
         list: res.list,
-        categories: res.categories,
+        categories: state.categories || res.categories,
         selectedCategory: action.payload.selectedCategory,
         isLoading: false,
       };
     case "SET_OKR_DATA":
       const { data } = action.payload;
-      res = transformResponse(data, action.payload.selectedCategory);
+      res = filterResponse(data, action.payload.selectedCategory);
       return {
         ...state,
         list: [].concat(res.list),
         categories: [].concat(res.categories),
-        selectedCategory: res.categories[0],
+        selectedCategory: res.categories[0], // setting first item in category as selectedCatergory by default
         okrData: data,
         isLoading: false,
       };

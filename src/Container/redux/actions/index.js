@@ -1,3 +1,3 @@
-import { transFormResponseAction, setOkrData, fetchOKrData } from "./list";
+import { filterDataAction, setOKRData, fetchOKRData } from "./list";
 
-export { transFormResponseAction, setOkrData, fetchOKrData };
+export { filterDataAction, setOKRData, fetchOKRData };

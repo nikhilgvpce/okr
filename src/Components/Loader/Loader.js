@@ -1,5 +1,10 @@
 import React from "react";
-import "./Loader.css"
+import "./Loader.css";
+
+/**
+ * 
+ * displays loader when fetching the OKR data
+ */
 
 const Loader = () => {
   return (
