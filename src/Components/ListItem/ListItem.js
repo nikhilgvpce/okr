@@ -21,6 +21,7 @@ const ListItem = (props) => {
         {children.map((child) => {
           return (
             <li
+              key={'my key -' + child.id}
               onClick={() =>
                 onClickListItem({ isModalOpen: true, item: child })
               }
